@@ -104,7 +104,7 @@ wallet-server:
 * [Google Java Style](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml)
 
 ## Project Status
-The project is currently at version **1.1.0** and is in a stable state.
+The project is currently at version **1.1.1** and is in a stable state.
 
 ## Contact
 For any inquiries or collaboration, you can contact us at:

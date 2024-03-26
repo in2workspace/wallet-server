@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v2/ebsi-did")
+@RequestMapping("/api/v1/ebsi-did")
 @RequiredArgsConstructor
 public class EbsiDidController {
 

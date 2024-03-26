@@ -21,7 +21,7 @@ public class WebSocketConfig {
     @Bean
     public HandlerMapping webSocketMapping(PinRequestWebSocketHandler webSocketHandler) {
         Map<String, WebSocketHandler> map = new HashMap<>();
-        map.put("/api/v2/pin", webSocketHandler);
+        map.put("/api/v1/pin", webSocketHandler);
 
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
         mapping.setUrlMap(map);

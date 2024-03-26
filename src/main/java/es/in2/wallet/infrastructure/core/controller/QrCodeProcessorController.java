@@ -18,7 +18,7 @@ import static es.in2.wallet.domain.util.ApplicationUtils.getCleanBearerToken;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v2/execute-content")
+@RequestMapping("/api/v1/execute-content")
 @RequiredArgsConstructor
 public class QrCodeProcessorController {
 

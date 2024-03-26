@@ -27,7 +27,7 @@ class EbsiDidControllerTest {
                 .bindToController(ebsiDidController)
                 .build()
                 .get()
-                .uri("/api/v2/ebsi-did")
+                .uri("/api/v1/ebsi-did")
                 .exchange()
                 .expectStatus().isOk();
     }

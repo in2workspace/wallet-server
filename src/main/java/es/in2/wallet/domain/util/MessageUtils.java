@@ -52,7 +52,7 @@ public class MessageUtils {
     public static final String JWT_VC_JSON = "jwt_vc_json";
     public static final String JWT_VP = "jwt_vp";
     public static final String ALLOWED_METHODS = "*";
-    public static final String GLOBAL_ENDPOINTS_API = "/api/v2/**";
+    public static final String GLOBAL_ENDPOINTS_API = "/api/v1/**";
     public static final Pattern LOGIN_REQUEST_PATTERN = Pattern.compile("(https|http)\\S*(authentication-request|authentication-requests)\\S*");
     public static final Pattern CREDENTIAL_OFFER_PATTERN = Pattern.compile("(https|http)\\S*(credential-offer)\\S*");
     public static final Pattern OPENID_CREDENTIAL_OFFER_PATTERN = Pattern.compile("openid-credential-offer://\\S*");

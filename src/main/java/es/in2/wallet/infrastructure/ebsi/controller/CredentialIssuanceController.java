@@ -19,7 +19,7 @@ import static es.in2.wallet.domain.util.ApplicationUtils.getCleanBearerToken;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v2/request-credential")
+@RequestMapping("/api/v1/request-credential")
 @RequiredArgsConstructor
 public class CredentialIssuanceController {
 

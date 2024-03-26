@@ -20,7 +20,7 @@ import java.util.UUID;
 import static es.in2.wallet.domain.util.ApplicationUtils.getCleanBearerToken;
 
 @RestController
-@RequestMapping("/api/v2/vp")
+@RequestMapping("/api/v1/vp")
 @Slf4j
 @RequiredArgsConstructor
 public class VerifiablePresentationController {

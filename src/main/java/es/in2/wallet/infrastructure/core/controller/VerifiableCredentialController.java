@@ -20,7 +20,7 @@ import java.util.UUID;
 import static es.in2.wallet.domain.util.ApplicationUtils.getCleanBearerAndUserIdFromToken;
 
 @RestController
-@RequestMapping("/api/v2/credentials")
+@RequestMapping("/api/v1/credentials")
 @Slf4j
 @RequiredArgsConstructor
 public class VerifiableCredentialController {
