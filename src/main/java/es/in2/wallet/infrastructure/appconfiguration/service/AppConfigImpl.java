@@ -3,6 +3,7 @@ package es.in2.wallet.infrastructure.appconfiguration.service;
 
 import es.in2.wallet.application.port.AppConfig;
 import es.in2.wallet.infrastructure.core.config.properties.AuthServerProperties;
+import es.in2.wallet.infrastructure.core.config.properties.VerifiablePresentationProperties;
 import es.in2.wallet.infrastructure.core.config.properties.WalletDrivingApplicationProperties;
 import es.in2.wallet.infrastructure.ebsi.config.properties.EbsiProperties;
 import es.in2.wallet.infrastructure.appconfiguration.util.ConfigAdapterFactory;
@@ -19,6 +20,8 @@ public class AppConfigImpl implements AppConfig {
     private final WalletDrivingApplicationProperties walletDrivingApplicationProperties;
     private final EbsiProperties ebsiProperties;
 
+    private final VerifiablePresentationProperties verifiablePresentationProperties;
+
     private String authServerInternalUrl;
     private String authServerExternalUrl;
     private String authServerTokenEndpoint;
@@ -33,11 +36,13 @@ public class AppConfigImpl implements AppConfig {
     public AppConfigImpl(ConfigAdapterFactory configAdapterFactory,
                          AuthServerProperties authServerProperties,
                          WalletDrivingApplicationProperties walletDrivingApplicationProperties,
-                         EbsiProperties ebsiProperties) {
+                         EbsiProperties ebsiProperties,
+                         VerifiablePresentationProperties verifiablePresentationProperties) {
         this.genericConfigAdapter = configAdapterFactory.getAdapter();
         this.authServerProperties = authServerProperties;
         this.walletDrivingApplicationProperties = walletDrivingApplicationProperties;
         this.ebsiProperties = ebsiProperties;
+        this.verifiablePresentationProperties = verifiablePresentationProperties;
     }
 
     @Override
@@ -112,6 +117,16 @@ public class AppConfigImpl implements AppConfig {
     @Override
     public String getIdentityProviderClientSecret() {
         return ebsiProperties.clientSecret();
+    }
+
+    @Override
+    public Long getCredentialPresentationExpirationTime() {
+        return verifiablePresentationProperties.expirationTime();
+    }
+
+    @Override
+    public String getCredentialPresentationExpirationUnit() {
+        return verifiablePresentationProperties.expirationUnit();
     }
 
     private String formatUrl(String scheme, String domain, int port) {

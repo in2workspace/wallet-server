@@ -104,6 +104,10 @@ auth-server:
     port: "8080"
     path: "/realms/EAAProvider/verifiable-credential/did:key:z6MkqmaCT2JqdUtLeKah7tEVfNXtDXtQyj4yxEgV11Y5CqUa/token"
 
+verifiable-presentation:
+  expiration-time: 3
+  expiration-unit: MINUTES #DAYS HOURS MINUTES SECONDS
+
 # These properties are used to pass the EBSI Holder Wallet Test
 ebsi:
   test:

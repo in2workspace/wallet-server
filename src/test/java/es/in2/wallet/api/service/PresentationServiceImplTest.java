@@ -2,6 +2,7 @@ package es.in2.wallet.api.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import es.in2.wallet.application.port.AppConfig;
 import es.in2.wallet.domain.model.CredentialsBasicInfo;
 import es.in2.wallet.domain.model.VcSelectorResponse;
 import es.in2.wallet.domain.service.SignerService;
@@ -43,6 +44,9 @@ class PresentationServiceImplTest {
     @Mock
     private SignerService signerService;
 
+    @Mock
+    private AppConfig appConfig;
+
     @InjectMocks
     private PresentationServiceImpl presentationService;
 
@@ -72,6 +76,11 @@ class PresentationServiceImplTest {
             when(getUserIdFromToken(authorizationToken)).thenReturn(Mono.just(userId));
             // Simulate the broker service returning an existing entity
             when(brokerService.getEntityById(processId, userId)).thenReturn(Mono.just(Optional.of(entity)));
+
+            Long expirationTime = 10L;
+            when(appConfig.getCredentialPresentationExpirationTime()).thenReturn(expirationTime);
+
+            when(appConfig.getCredentialPresentationExpirationUnit()).thenReturn("minutes");
 
             // Simulate the user data service returning a list of verifiable credential JWTs
             when(userDataService.getVerifiableCredentialByIdAndFormat(entity, credentialsBasicInfo.id(), JWT_VC)).thenReturn(Mono.just(vcJwt));

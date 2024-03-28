@@ -47,6 +47,10 @@ auth-server:
     port: 443
     path: "your-path"
 
+verifiable-presentation:
+  expiration-time: 3
+  expiration-unit: MINUTES
+
 wallet-wda:
   urls:
     - scheme: https

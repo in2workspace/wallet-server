@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import es.in2.wallet.application.port.AppConfig;
 import es.in2.wallet.application.port.BrokerService;
 import es.in2.wallet.domain.exception.ParseErrorException;
 import es.in2.wallet.domain.model.CredentialsBasicInfo;
@@ -35,6 +36,8 @@ public class PresentationServiceImpl implements PresentationService {
     private final UserDataService userDataService;
     private final BrokerService brokerService;
     private final SignerService signerService;
+
+    private final AppConfig appConfig;
 
     /**
      * Creates and signs a Verifiable Presentation (VP) using the selected Verifiable Credentials (VCs).
@@ -176,7 +179,7 @@ public class PresentationServiceImpl implements PresentationService {
                     .build();
 
             Instant issueTime = Instant.now();
-            Instant expirationTime = issueTime.plus(10, ChronoUnit.DAYS);
+            Instant expirationTime = issueTime.plus(appConfig.getCredentialPresentationExpirationTime(), ChronoUnit.valueOf(appConfig.getCredentialPresentationExpirationUnit().toUpperCase()));
             Map<String, Object> vpParsed = JWTClaimsSet.parse(objectMapper.writeValueAsString(vpBuilder)).getClaims();
             JWTClaimsSet payload = new JWTClaimsSet.Builder()
                     .issuer(holderDid)
